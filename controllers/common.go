@@ -21,7 +21,7 @@ func ReturnSuccess(ctx *gin.Context, code int, msg interface{}, data interface{}
 	ctx.JSON(200, json)
 }
 
-// ReturnError 错误返回
+// ReturnError 错误返回1
 func ReturnError(ctx *gin.Context, code int, msg interface{}) {
 	json := &JsonStruct{
 		Code: code,
