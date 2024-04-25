@@ -10,6 +10,11 @@ type JsonStruct struct {
 	Count int64       `json:"count"`
 }
 
+type JsonErrStruct struct {
+	Code int         `json:"code"`
+	Msg  interface{} `json:"msg"`
+}
+
 // ReturnSuccess 正确返回
 func ReturnSuccess(ctx *gin.Context, code int, msg interface{}, data interface{}, count int64) {
 	json := &JsonStruct{
@@ -21,9 +26,9 @@ func ReturnSuccess(ctx *gin.Context, code int, msg interface{}, data interface{}
 	ctx.JSON(200, json)
 }
 
-// ReturnError 错误返回1
+// ReturnError 错误返回
 func ReturnError(ctx *gin.Context, code int, msg interface{}) {
-	json := &JsonStruct{
+	json := &JsonErrStruct{
 		Code: code,
 		Msg:  msg,
 	}
